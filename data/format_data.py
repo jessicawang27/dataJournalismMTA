@@ -28,6 +28,6 @@ for i in range(1, len(lines)):
 f1.close()
 
 # #Save the json object to a file
-f2 = open("life_expectancy.json", "w")
+f2 = open("subway_data.json", "w")
 json.dump(dictionary, f2, indent = 4)
 f2.close()
