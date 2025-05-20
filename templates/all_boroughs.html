@@ -1,12 +1,52 @@
 <html>
     
     <head>
+
         <title>All Boroughs</title>
+
     </head>
     <body>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand">Pages</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="about" id="aboutPage">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="all_boroughs" id="allBoroughsPage">All Boroughs</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
         <link rel="stylesheet" href="styles.css">
         <h1>All Boroughs</h1>
-    
+
+        <div>
+        {% include 'nyc_boroughs.svg' %}
+        </div>
+
+        <div>
+            <form action="/borough" method="GET">
+                <label>Choose a borough:</label><br>
+                <select name="borough" id="borough_select">
+                    {% for borough in boroughs %}
+                        <option>{{ borough }}</option>
+                    {% endfor %}
+                </select>
+        
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+
+
     </body>
 </html>
 
