@@ -9,11 +9,13 @@ with open('data/subway_data.json', 'r') as f:
 
 @app.route('/')
 def about():
+    
     return render_template('about.html')
 
 @app.route('/all_boroughs')
 def all_boroughs():
-    return render_template('all_boroughs.html')
+    boroughs=[x for x in data]
+    return render_template('all_boroughs.html',boroughs=boroughs)
 
 @app.route('/borough')
 def borough():
