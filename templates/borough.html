@@ -2,13 +2,16 @@
     <head>
         <title>{{ Borough}}</title>
         <link rel="stylesheet" href="styles.css">
-        <h1>Insert Borough</h1>
+        
         
     </head>
     <body>
+        <div >
+        {% include 'navbar.html' %}
+      </div>
+      <h1>{{borough}}</h1>
         <div>
-            {% include 'nyc_boroughs.svg' %}
-
+            {% include 'borough.svg' %}
         </div>
     </body>
     
