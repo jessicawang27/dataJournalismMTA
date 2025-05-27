@@ -1,5 +1,4 @@
 <html>
-    
     <head>
         <title>All Boroughs</title>
         <link rel="stylesheet" href="styles.css">
@@ -8,9 +7,7 @@
       <div >
         {% include 'navbar.html' %}
       </div>
-        
         <h1>All Boroughs</h1>
-
         <div>
         {% include 'nyc_boroughs.svg' %}
         </div>
@@ -19,15 +16,13 @@
             <form action="/borough" method="GET">
                 <label>Choose a borough:</label><br>
                 <select name="borough" id="borough_select">
-                    {% for borough in boroughs %}
-                        <option>{{ borough }}</option>
+                    {% for s in shorthand %}
+                        <option value="{{ s }}">{{ shorthand[s] }}</option>
                     {% endfor %}
                 </select>
-        
                 <input type="submit" value="Submit"/>
             </form>
         </div>
-
     </body>
 </html>
 
