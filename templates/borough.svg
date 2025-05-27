@@ -1,0 +1,15 @@
+<svg xmlns="http://borough.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+    <text x="1000" y="100">
+        Insert description
+    </text>
+    <!--     x axis-->
+    <line x1="70" y1="600" x2="1100" y2="600" stroke="black" stroke-width="2"/>
+    <text x="550" y="680" text-anchor="middle">Subway Lines</text>
+
+    <!--    y axis-->
+    <line x1="70" x2="70" y1="30" y2="600" stroke="black" stroke-width="2"/>
+    <text x="13" y="250" text-anchor="middle" transform="rotate(-90,13,250)">Number of Stops</text>
+    {% for i in range(11) %}
+    <line x1="60" x2="70" y1="{{600-50*i}}" y2="{{600-50*i}}" stroke="black" stroke-width="2"/>
+    {% endfor %}
+</svg>
