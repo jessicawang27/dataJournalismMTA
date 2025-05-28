@@ -1,3 +1,12 @@
 body{
-    background-color: #61d2e8;
+    background-color: RGB(166,199,239);
+    font-family: "WDXL Lubrifont TC", sans-serif;
+    font-size: x-large;
+}
+
+#Bx path,#SI path,#M path,#B path,#Q path {
+    fill:pink;
+}
+.navbar-brand{
+    fill: #80aaed;
 }
