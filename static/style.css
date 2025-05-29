@@ -7,6 +7,6 @@ body{
 #Bx path,#SI path,#M path,#B path,#Q path {
     fill:pink;
 }
-.navbar-brand{
-    fill: #80aaed;
+nav{
+    background-color: RGB(166,199,239);
 }
