@@ -15,7 +15,8 @@ def about():
 @app.route('/all_boroughs')
 def all_boroughs():
     boroughs=[x for x in data]
-    return render_template('all_boroughs.html',boroughs=boroughs)
+    shorthand=data['shorthand']
+    return render_template('all_boroughs.html',boroughs=boroughs,shorthand=shorthand)
 
 @app.route('/borough')
 def borough():
