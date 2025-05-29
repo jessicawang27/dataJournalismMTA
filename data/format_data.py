@@ -40,3 +40,10 @@ data = {
     'shorthand':shorthand,
     'subways':subways
 }
+
+f2 = open("subway_data.json", "w")
+json.dump(data, f2, indent = 4)
+
+
+f2.close()
+
