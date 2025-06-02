@@ -21,6 +21,7 @@ def all_boroughs():
 @app.route('/borough')
 def borough():
     borough = request.args.get("borough")
-    return render_template('borough.html',borough=borough)
+    subways = data['subways']
+    return render_template('borough.html',borough=borough,subways=subways)
 
 app.run(debug=True)
