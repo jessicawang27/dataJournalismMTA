@@ -14,7 +14,13 @@
         <div>
         {% include 'nyc_boroughs.svg' %}
         </div>
-
+        <br>
+        <div x="2000" y="600">
+            Manhattan has the most number of subway stops.
+            Staten Island has the least number of subway stops.
+            The average number of subway stops is 23.
+        </div>
+        <br>
         <div>
             <form action="/borough" method="GET">
                 <label>Choose a borough:</label><br>
@@ -26,6 +32,9 @@
                 <input type="submit" value="Submit"/>
             </form>
         </div>
+        
+        <div>
+            {% include 'footer.html' %}
+          </div>
     </body>
 </html>
-
