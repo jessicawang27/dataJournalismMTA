@@ -4,9 +4,25 @@ body{
     font-size: x-large;
 }
 
-#Bx path,#SI path,#M path,#B path,#Q path {
+#Bx path,#SI path,#M path,#B path,#Q path ,.legend{
     fill:pink;
+    filter: saturate(100%);
 }
-nav{
-    background-color: RGB(166,199,239);
-}
+
+.level1{filter:saturate(900%) !important;}
+.level2{filter:saturate(700%) !important;}
+.level3{filter:saturate(500%) !important;}
+.level4{filter:saturate(300%) !important;}
+.level5{filter:saturate(150%) !important;}
+
+.bg1{fill: #DC4E4A;}
+.bg2{fill: #E7883B;}
+.bg3{fill: #F7D64E;}
+.bg4{fill: #459B5D;}
+.bg5{fill: #8CBF55;}
+.bg6{fill: #2E68AF;}
+.bg7{fill: #924492;}
+.bg8{fill: #949599;}
+.bg9{fill: #6D6E72;}
+.bg10{fill: #A67639;}
+.bg11{fill: #ffabab;}
