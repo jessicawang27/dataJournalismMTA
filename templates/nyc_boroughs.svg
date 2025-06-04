@@ -3,8 +3,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1"
 	 id="NYC" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" inkscape:version="0.47 r22583" sodipodi:docname="New_York_City_location_Manhattan.svg"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="700px"
-	 height="700px" style= "display: block; border: 5px solid white" viewBox="0 0 1999.709 1977.598" enable-background="new 0 0 1999.709 1977.598" xml:space="preserve">
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000px"
+	 height="998px" style= "display: block; border: 5px solid white" viewBox="0 0 1999.709 1977.598" enable-background="new 0 0 1999.709 1977.598" xml:space="preserve">
 <defs>
 	
 	
@@ -1274,5 +1274,55 @@
 </g>
 <sodipodi:namedview  objecttolerance="10" pagecolor="#ffffff" borderopacity="1" inkscape:cy="247.2" inkscape:cx="250" guidetolerance="10" bordercolor="#666666" gridtolerance="10" inkscape:zoom="1.5230583" showgrid="false" id="namedview138" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1680" inkscape:window-height="1000" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="katman_1">
 	</sodipodi:namedview>
+	{% for i in range(5)%}
+		<rect x="1600" y="{{1600+i*60}}" width="100" height="50" class="legend level{{i+1}}"/>
+		<text x="1720" y="{{1635+i*60}}" font-size="22">
+			{% if i==0 %}
+				< {{"%d"|format(min+(max-min)/5)}} stops
+			{% elif i==4%}
+				> {{"%d"|format(max-(max-min)/5 )}} stops
+			{% else %}
+				{{"%d"|format(min+(max-min)/5*i)}}-{{"%d"|format(min+(max-min)/5*(i+1))}} stops
+			{% endif%}
+	</text>
+	{% endfor%}
 
+	<text x="40" y="20" font-size="40px">
+		<tspan x="40"  dy="40">
+			There are {{pure_data['M']}} stops in Manhattan,
+			{{pure_data['B']}}  stops in Brooklyn,
+			{{pure_data['Q']}}  stops in Queens,
+			{{pure_data['Bx']}}  stops in The Bronx,
+			and {{pure_data['SI']}}  stops in Staten Island.
+		</tspan>
+		<tspan x="40"  dy="60">
+			{{shorthand[boroughs[0]['name']]}} has the most stops ({{boroughs[0]['value']}}) and
+			{{shorthand[boroughs[-1]['name']]}} has the least stops ({{boroughs[-1]['value']}}).
+		</tspan>
+		<tspan x="40" dy="80"> The average number of stops per borough is {{avg}}</tspan>
+		<tspan x="40"  dy="100">
+			The darker pink boroughs represent a lower number of stops,
+		</tspan>
+		<tspan x="40"  dy="100">
+			whereas the lighter pink boroughs represent a higher number of stops.
+		</tspan>
+		
+	</text>
+	<g font-size="50">
+	<text x="1000" y="700" transform="rotate(-60,1000,700)">
+		Manhattan
+	</text>
+	<text x="1275" y="300" transform="rotate(20,1275,300)">
+		The Bronx
+	</text>
+	<text x="1500" y="900">
+		Queens
+	</text>
+	<text x="1025" y="1300">
+		Brooklyn
+	</text>
+	<text x="325" y="1525">
+		Staten Island
+	</text>
+	</g>
 </svg>
