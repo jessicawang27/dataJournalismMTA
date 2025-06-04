@@ -10,31 +10,55 @@
       <div >
         {% include 'navbar.html' %}
       </div>
-        <h1>All Boroughs</h1>
+        <h1>Number of Subway Stops in NYC Boroughs</h1>
+        <br>
         <div>
         {% include 'nyc_boroughs.svg' %}
         </div>
-        <br>
-        <div x="2000" y="600">
-            Manhattan has the most number of subway stops.
-            Staten Island has the least number of subway stops.
-            The average number of subway stops is 23.
-        </div>
-        <br>
+
         <div>
             <form action="/borough" method="GET">
                 <label>Choose a borough:</label><br>
                 <select name="borough" id="borough_select">
                     {% for s in shorthand %}
-                        <option value="{{ shorthand[s] }}">{{ shorthand[s] }}</option>
+                        <option value="{{s}}">{{ shorthand[s] }}</option>
                     {% endfor %}
                 </select>
                 <input type="submit" value="Submit"/>
             </form>
         </div>
-        
+     <script>
+            let colors = ["#eaf7e2", "#aee2b8", "#6bbf8a", "#3b9f6b", "#2a6d52"]
+            let boroughs = {{ boroughs | tojson | safe }}
+            let shorthand = {{ shorthand | tojson | safe }}
+            let max = {{ max }}
+            let min = {{ min }}
+            let diff = (max-min)/5
+
+            for(let bo of boroughs){
+                let key = bo['name']
+                let value = bo['value']
+                console.log(key,value)
+                changeColor(key,value)
+            }
+
+            function changeColor(key,value){
+                let g = document.getElementById(key);
+                let paths = g.getElementsByTagName("path")
+
+                for(let i = 0 ; i<5 ; i++){
+                    if(value >= min+diff*i && value<=min+diff*(i+1)){
+                        for (let p of paths) {
+                            p.classList.add("level" + (i + 1));
+                        }
+                        break;
+                    }
+                }
+            }
+        </script>
         <div>
-            {% include 'footer.html' %}
-          </div>
+          {% include 'footer.html' %}
+        </div>
     </body>
 </html>
+
