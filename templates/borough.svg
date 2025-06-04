@@ -1,6 +1,20 @@
-<svg xmlns="http://borough.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
-    <text x="1000" y="100">
-        Insert description
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700">
+    <text x="100" y="0">
+        <tspan x="300" y="50">
+            The number of stops in {{borough}} borough is
+            {% if (stops-avg)|abs <=10:%}
+                very close to
+            {% elif (stops-avg)|abs <= 30:%}
+                close to
+            {% elif (stops-avg)|abs <=40:%}
+                far from
+            {% else: %}
+                very far from
+            {% endif%}
+            from the average number of stops in NYC.
+        </tspan>
+        <tspan x="300" y="80">It has {{stops}} stops, while the average is {{avg}} stops.</tspan>
+        <tspan x="300" y="110">The colors of the bars correspond to the colors of the subway lines.</tspan>
     </text>
     <!--     x axis-->
     <line x1="70" y1="600" x2="1100" y2="600" stroke="black" stroke-width="2"/>
@@ -8,8 +22,21 @@
 
     <!--    y axis-->
     <line x1="70" x2="70" y1="30" y2="600" stroke="black" stroke-width="2"/>
-    <text x="13" y="250" text-anchor="middle" transform="rotate(-90,13,250)">Number of Stops</text>
-    {% for i in range(11) %}
+    <text x="20" y="270" text-anchor="middle" transform="rotate(-90,20,270)">Number of Stops</text>
+    {% for i in range(11)%}
     <line x1="60" x2="70" y1="{{600-50*i}}" y2="{{600-50*i}}" stroke="black" stroke-width="2"/>
-    {% endfor %}
+    <text x="60" y="{{600-50*i}}" text-anchor="end" dominant-baseline="middle">{{"%d"|format(min+i*((max-min)/10))}}
+    </text>
+    {% endfor%}
+
+    {% for i in range(colors|length):%}
+        {% set key = colors[i]['line']%}
+        {% set bg = colors[i]['bg']%}
+        {% set value = amount_info[key]%}
+        {% set height = (value-min)/((max-min)/10) * 50%}
+        <text x="{{90+i*42}}" y="625" text-anchor="middle">{{key}}</text>
+        <text x="{{90+i*42}}" y="{{600-height-10}}" text-anchor="middle">{{value}}</text>
+        <rect x="{{80+i*42}}" y="{{600-height}}" width="20" height="{{height-1}}" class="bg{{bg}}"/>
+    {%endfor%}
+
 </svg>
